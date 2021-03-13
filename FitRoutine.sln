@@ -11,14 +11,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services", "Services\Servic
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests", "UnitTests\UnitTests.csproj", "{9D49FD38-0ACB-4774-86DE-CA31D7B6C721}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{093DBE71-DF83-4685-B09B-3DADD8DADC9C}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Images", "Images", "{D2727BF4-91D1-48F6-91B5-674AF50432F3}"
-	ProjectSection(SolutionItems) = preProject
-		C:\Users\hshir\OneDrive\Desktop\day_index.png = C:\Users\hshir\OneDrive\Desktop\day_index.png
-		C:\Users\hshir\OneDrive\Desktop\home_index.png = C:\Users\hshir\OneDrive\Desktop\home_index.png
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,9 +36,6 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{D2727BF4-91D1-48F6-91B5-674AF50432F3} = {093DBE71-DF83-4685-B09B-3DADD8DADC9C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {445CDCE2-74CC-414F-AC36-4D25BC81AD78}
