@@ -1,0 +1,45 @@
+﻿@model Data.Models.Exercise
+
+@{
+    ViewBag.Title = Model.Name;
+}
+
+<h2 class="mb-3">@ViewBag.Title on @Model.Day.Name</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="jumbotron">
+        @Html.HiddenFor(model => model.Day.Id)
+        @Html.HiddenFor(model => model.Day.Name)
+         @Html.HiddenFor(m => m.Name)
+        <div class="row">
+            <div class="col-3">
+                @Html.LabelFor(model => model.Sets)
+                @Html.EditorFor(m => m.Sets, new { htmlAttributes = new { @class = "form-control", @min = "1" } })
+            </div>
+            <div class="col-3">
+                @Html.LabelFor(model => model.Reps)
+                @Html.EditorFor(m => m.Reps, new { htmlAttributes = new { @class = "form-control", @min = "1" } })               
+            </div>
+            <div class="col-3">
+                @Html.LabelFor(model => model.WeightInKg)
+                @Html.EditorFor(m => m.WeightInKg, new { htmlAttributes = new { @class = "form-control", @min = "0" } })          
+            </div>
+            <div class="col-3 align-self-end">
+                <button class="btn btn-success" type="submit">Update</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                @Html.ValidationMessageFor(model => model.Sets, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-3">
+                @Html.ValidationMessageFor(model => model.Reps, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-3">
+                @Html.ValidationMessageFor(model => model.WeightInKg, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+}

@@ -1,0 +1,35 @@
+﻿@model FitRoutine.Models.DayIndexModel
+
+@{
+    ViewBag.Title = Model.Name;
+}
+
+<h2 class="mb-3">@ViewBag.Title</h2>
+<form method="post">
+    <button asp-action="ChangeRestDayStatus" asp-route-id="@Model.Id" class="btn btn-light mr-1">Make @(Model.IsRestDay ? "Training Day" : "Rest Day")</button>
+    @if (!Model.IsRestDay)
+    {
+        <button asp-action="AddExercise" asp-route-id="@Model.Id" formmethod="get" class="btn btn-success">Add New Exercise</button>
+        <div class="mt-3">
+            @foreach (var exercise in Model.Exercises)
+            {
+                <div class="row">
+                    <div class="col-3 align-self-end exercise-name">
+                        @exercise.Name
+                    </div>
+                    <div class="col-3 align-self-end exercise-info">
+                        @exercise.Sets x @exercise.Reps
+                    </div>
+                    <div class="col-3 align-self-end exercise-info">
+                        @exercise.Weight Kg
+                    </div>
+                    <div class="col-3">
+                        <button asp-action="EditExercise" asp-route-id="@exercise.Id" class="btn btn-info change-button mr-1" formmethod="get">Change</button>
+                        <button asp-action="RemoveExercise" asp-route-id="@exercise.Id" asp-route-dayid="@Model.Id" class="btn btn-danger">Remove</button>
+                    </div>
+                </div>
+                <hr />
+            }
+        </div>
+    }
+</form>

@@ -1,0 +1,34 @@
+﻿@model FitRoutine.Models.DayListModel
+
+@{
+    ViewData["Title"] = "Home";
+}
+
+<div>
+    @foreach (var day in Model.Days)
+    {
+        <h3 class="day-name"><a asp-controller="Day" asp-action="Index" asp-route-id="@day.Id">@day.Name</a></h3>
+        @if (!day.IsRestDay)
+        {
+            @foreach (var exercise in day.Exercises)
+            {
+                <div class="row">
+                    <div class="col-4 align-self-end exercise-name">
+                        @exercise.Name
+                    </div>
+                    <div class="col-4 align-self-end exercise-info">
+                        @exercise.Sets x @exercise.Reps
+                    </div>
+                    <div class="col-4 align-self-end exercise-info">
+                        @exercise.Weight Kg
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <h6 class="text-muted">Rest Day</h6>
+        }
+        <hr />
+    }
+</div>

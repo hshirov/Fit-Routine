@@ -1,0 +1,58 @@
+﻿@model Data.Models.Exercise
+
+@{
+    ViewBag.Title = "Add Exercise";
+}
+
+<div class="mb-3">
+    <h2>Add @Model.Day.Name Exercise</h2>
+    <a asp-controller="Exercises" asp-action="Index" target="_blank">View sample exercises</a>
+</div>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="jumbotron">
+        @Html.HiddenFor(model => model.Day.Id)
+        @Html.HiddenFor(model => model.Day.Name)
+
+        <div class="centered-form">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Name, new { @class = "control-label col-6" })
+                <div class="col-12">
+                    @Html.EditorFor(m => m.Name, new { htmlAttributes = new { @class = "form-control", @placeholder = "e.g., Squat, Bench Press" } })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Sets, new { @class = "control-label col-6" })
+                <div class="col-12">
+                    @Html.EditorFor(m => m.Sets, new { htmlAttributes = new { @class = "form-control", @min = "1" } })
+                    @Html.ValidationMessageFor(model => model.Sets, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Reps, new { @class = "control-label col-6" })
+                <div class="col-12">
+                    @Html.EditorFor(m => m.Reps, new { htmlAttributes = new { @class = "form-control", @min = "1" } })
+                    @Html.ValidationMessageFor(model => model.Reps, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.WeightInKg, new { @class = "control-label col-6" })
+                <div class="col-12">
+                    @Html.EditorFor(m => m.WeightInKg, new { htmlAttributes = new { @class = "form-control", @min = "0" } })
+                    @Html.ValidationMessageFor(model => model.WeightInKg, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group centered-button">
+                <div class="col-offset-2 col-12">
+                    <button type="submit" class="btn btn-primary btn-block">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
